@@ -1,5 +1,3 @@
-// web/src/pages/ContactPage/ContactPage.js
-
 import {
   Form,
   TextField,
@@ -11,6 +9,7 @@ import {
 } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
+import { useForm } from 'react-hook-form'
 
 const CREATE_CONTACT = gql`
   mutation CreateContactMutation($input: CreateContactInput!) {
@@ -21,26 +20,28 @@ const CREATE_CONTACT = gql`
 `
 
 const ContactPage = () => {
+  const formMethods = useForm({ mode: 'onBlur' })
+
   const [create, { loading, error }] = useMutation(CREATE_CONTACT, {
     onCompleted: () => {
       toast.success('Thank you for your submission!')
+      formMethods.reset()
     },
   })
 
   const onSubmit = (data) => {
+    create({ variables: { input: data } })
     console.log(data)
-    create({ variables: { input: data }})
-    // try {
-    //   await create({ variables: { input: data } })
-    // } catch (error) {
-    //   console.warning(error)
-    // }
   }
 
   return (
     <>
       <Toaster />
-      <Form onSubmit={onSubmit} validation={{ mode: 'onBlur' }} error={error}>
+      <Form
+        onSubmit={onSubmit}
+        error={error}
+        formMethods={formMethods}
+      >
         <FormError
           error={error}
           wrapperStyle={{ color: 'red', backgroundColor: 'lavenderblush' }}
@@ -62,10 +63,10 @@ const ContactPage = () => {
           name="email"
           validation={{
             required: true,
-            // pattern: {
-            //   value: /[^@]+@[^.]+\..+/,
-            //   message: 'Please enter a valid email address',
-            // },
+            pattern: {
+              value: /[^@]+@[^.]+\..+/,
+              message: 'Please enter a valid email address',
+            },
           }}
           errorClassName="error"
         />
@@ -82,7 +83,6 @@ const ContactPage = () => {
         <FieldError name="message" className="error" />
 
         <Submit disabled={loading}>Save</Submit>
-
       </Form>
     </>
   )
