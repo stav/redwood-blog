@@ -18,8 +18,10 @@ import './HealthScorePage.css'
 const HealthScorePage = () => {
   const [age, setAge] = useState(65)
   const [height, setHeight] = useState(null)
+  const [weight, setWeight] = useState(null)
   const ageChange = (e) => { setAge(e.target.value) }
   const heightChange = (e) => { setHeight(e.target.value) }
+  const weightChange = (e) => { setWeight(e.target.value) }
 
   return (
     <>
@@ -61,6 +63,22 @@ const HealthScorePage = () => {
           min="85"
           max="215"
           onChange={heightChange}
+          className="input"
+        />
+
+        <Label name="wgt" className="field"> Weight (kg): </Label>
+        <TextField
+          name="hgt"
+          value={weight}
+          onChange={weightChange}
+          className="input text-weight"
+        />
+        <RangeField
+          name="weightRange"
+          value={weight}
+          min="35"
+          max="165"
+          onChange={weightChange}
           className="input"
         />
 
