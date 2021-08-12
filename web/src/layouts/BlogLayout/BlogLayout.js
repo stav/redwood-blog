@@ -15,6 +15,9 @@ const BlogLayout = ({ children }) => {
         <nav>
           <ul>
             <li>
+              <Link to={routes.healthScore()}>Health Score</Link>
+            </li>
+            <li>
               <Link to={routes.about()}>About</Link>
             </li>
             <li>
