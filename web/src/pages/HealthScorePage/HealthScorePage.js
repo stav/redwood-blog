@@ -4,6 +4,7 @@ import { Link, routes } from '@redwoodjs/router'
 import {
   Form,
   TextField,
+  RadioField,
   RangeField,
   TextAreaField,
   Submit,
@@ -26,7 +27,7 @@ const HealthScorePage = () => {
       <h1>Health Score</h1>
       <Form
       >
-        <Label name="age"> Age </Label>
+        <Label name="age" className="field"> Age: </Label>
         <TextField
           name="age"
           value={age}
@@ -41,6 +42,12 @@ const HealthScorePage = () => {
           onChange={ageChange}
           className="input"
         />
+
+        <Label name="sex" className="field"> Sex: </Label>
+        <Label name="sex" className="label"> Male </Label>
+        <RadioField name="sex" value={1} className="input" />
+        <Label name="playbackRate" className="label"> Female </Label>
+        <RadioField name="sex" value={0} className="input" />
       </Form>
     </>
   )

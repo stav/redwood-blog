@@ -7,3 +7,14 @@
   display: inline-block;
   vertical-align: middle;
 }
+
+.label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 0;
+}
+
+.field {
+  display: block;
+  vertical-align: middle;
+}
