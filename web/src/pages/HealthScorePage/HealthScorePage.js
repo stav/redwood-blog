@@ -16,9 +16,9 @@ import {
 import './HealthScorePage.css'
 
 const HealthScorePage = () => {
-  const [age, setAge] = useState(65)
-  const [height, setHeight] = useState(null)
-  const [weight, setWeight] = useState(null)
+  const [age, setAge] = useState('')
+  const [height, setHeight] = useState('')
+  const [weight, setWeight] = useState('')
   const ageChange = (e) => { setAge(e.target.value) }
   const heightChange = (e) => { setHeight(e.target.value) }
   const weightChange = (e) => { setWeight(e.target.value) }
