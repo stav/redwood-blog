@@ -1,5 +1,3 @@
-// web/src/components/BlogPostCell/BlogPostCell.js
-
 import BlogPost from 'src/components/BlogPost'
 
 export const QUERY = gql`

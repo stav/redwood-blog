@@ -5,7 +5,7 @@ import { navigate, routes } from '@redwoodjs/router'
 import PostForm from 'src/components/Post/PostForm'
 
 export const QUERY = gql`
-  query EditPostById($id: Int!) {
+  query FindPostById($id: Int!) {
     post: post(id: $id) {
       id
       title

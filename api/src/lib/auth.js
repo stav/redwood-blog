@@ -30,6 +30,18 @@ export const getCurrentUser = async (decoded, { _token, _type }, { _event, _cont
  * @throws {ForbiddenError} If the currentUser is not allowed due to role permissions
  *
  * @see https://github.com/redwoodjs/redwood/tree/main/packages/auth for examples
+ *
+ * @example
+ *
+ * // checks if currentUser is authenticated
+ * requireAuth()
+ *
+ * @example
+ *
+ * // checks if currentUser is authenticated and assigned one of the given roles
+ * requireAuth({ role: 'admin' })
+ * requireAuth({ role: ['editor', 'author'] })
+ * requireAuth({ role: ['publisher'] })
  */
 export const requireAuth = ({ role } = {}) => {
   if (!context.currentUser) {
